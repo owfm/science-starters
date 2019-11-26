@@ -1,0 +1,44 @@
+{
+    "paths": [
+        {
+            "name": "/questions",
+            "lambdaFunction": "questionsLambda",
+            "privacy": {
+                "protected": true,
+                "auth": [
+                    "/POST",
+                    "/GET",
+                    "/PUT",
+                    "/PATCH",
+                    "/DELETE"
+                ],
+                "unauth": [
+                    "/GET"
+                ]
+            }
+        }
+    ],
+    "resourceName": "scienceStarterApi",
+    "apiName": "scienceStarterApi",
+    "functionArns": [
+        {
+            "lambdaFunction": "questionsLambda"
+        }
+    ],
+    "privacy": {
+        "auth": 1,
+        "unauth": 1,
+        "authRoleName": "amplify-sciencestarters-prod-125855-authRole",
+        "unAuthRoleName": "amplify-sciencestarters-prod-125855-unauthRole"
+    },
+    "dependsOn": [
+        {
+            "category": "function",
+            "resourceName": "questionsLambda",
+            "attributes": [
+                "Name",
+                "Arn"
+            ]
+        }
+    ]
+}

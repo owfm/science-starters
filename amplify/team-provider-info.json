@@ -1,0 +1,20 @@
+{
+    "prod": {
+        "awscloudformation": {
+            "AuthRoleName": "amplify-sciencestarters-prod-125855-authRole",
+            "UnauthRoleArn": "arn:aws:iam::131745021459:role/amplify-sciencestarters-prod-125855-unauthRole",
+            "AuthRoleArn": "arn:aws:iam::131745021459:role/amplify-sciencestarters-prod-125855-authRole",
+            "Region": "eu-west-2",
+            "DeploymentBucketName": "amplify-sciencestarters-prod-125855-deployment",
+            "UnauthRoleName": "amplify-sciencestarters-prod-125855-unauthRole",
+            "StackName": "amplify-sciencestarters-prod-125855",
+            "StackId": "arn:aws:cloudformation:eu-west-2:131745021459:stack/amplify-sciencestarters-prod-125855/6970cae0-104c-11ea-96ff-0aea06869730",
+            "AmplifyAppId": "d25m38mi8ohwlh"
+        },
+        "categories": {
+            "auth": {
+                "cognitoad677620": {}
+            }
+        }
+    }
+}
