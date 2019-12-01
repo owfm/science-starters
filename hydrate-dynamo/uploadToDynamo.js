@@ -4,16 +4,19 @@ const rawData = fs.readFileSync('questionsForDynamo.json');
 const questions = JSON.parse(rawData);
 
 function multiWrite(table, data, cb) {
-  var AWS = require('aws-sdk');
-  var credentials = new AWS.SharedIniFileCredentials({ profile: 'owfm' });
+  const AWS = require('aws-sdk');
+  const credentials = new AWS.SharedIniFileCredentials({ profile: 'owfm' });
   AWS.config.credentials = credentials;
 
-  var ddb = new AWS.DynamoDB({ apiVersion: '2012-08-10', region: 'eu-west-2' });
+  const ddb = new AWS.DynamoDB({
+    apiVersion: '2012-08-10',
+    region: 'eu-west-2',
+  });
 
   // Build the batches
-  var batches = [];
-  var current_batch = [];
-  var item_count = 0;
+  const batches = [];
+  let current_batch = [];
+  let item_count = 0;
   for (var x in data) {
     // Add the item to the current batch
     item_count++;
@@ -32,8 +35,8 @@ function multiWrite(table, data, cb) {
     batches.push(current_batch);
 
   // Handler for the database operations
-  var completed_requests = 0;
-  var errors = false;
+  let completed_requests = 0;
+  let errors = false;
   function handler(request) {
     return function(err, data) {
       // Increment the completed requests
@@ -57,11 +60,11 @@ function multiWrite(table, data, cb) {
   }
 
   // Make the requests
-  var params;
+  let params;
   for (x in batches) {
     // Items go in params.RequestItems.id array
     // Format for the items is {PutRequest: {Item: ITEM_OBJECT}}
-    params = '{"RequestItems": {"' + table + '": []}}';
+    params = `{"RequestItems": {"${table}": []}}`;
     params = JSON.parse(params);
     params.RequestItems[table] = batches[x];
 
@@ -70,6 +73,6 @@ function multiWrite(table, data, cb) {
   }
 }
 
-multiWrite('questions-prod', questions, function(error) {
+multiWrite('questions-prod', questions, error => {
   console.log(error);
 });

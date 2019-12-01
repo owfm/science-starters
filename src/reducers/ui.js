@@ -2,10 +2,10 @@ export function filters(state = [], action) {
   switch (action.type) {
     case 'TOGGLE_FILTER':
       if (state.includes(action.filter)) {
-        return [...filters.filter(f => f !== action.filter)];
-      } else {
-        return [...state, action.filter];
+        return [...filters.filter((f) => f !== action.filter)];
       }
+      return [...state, action.filter];
+
 
     case 'CLEAR_FILTERS':
       return [];
