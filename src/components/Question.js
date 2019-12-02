@@ -17,7 +17,7 @@ const useStyles = makeStyles({
   },
 });
 
-const Question = ({ question, showAnswer, number }) => {
+const Question = ({ question, showAnswer }) => {
   const [showAnswerFromClick, setShowAnswerFromClick] = useState(false);
 
   const classes = useStyles();
@@ -29,12 +29,12 @@ const Question = ({ question, showAnswer, number }) => {
   };
 
   const renderAnswer = () => {
-    const html_to_render = question.answer
+    const htmlToRender = question.answer
       .replace('<eq>', "<span class='equation'>")
       .replace('</eq>', '</span>');
     const md = new Remarkable({ html: true });
     md.inline.ruler.enable(['sub', 'sup']);
-    return { __html: md.render(html_to_render) };
+    return { __html: md.render(htmlToRender) };
   };
 
   const renderQuestions = () => {

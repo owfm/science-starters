@@ -1,30 +1,39 @@
+import * as actions from '../actions/types';
+
 export function filters(state = [], action) {
   switch (action.type) {
-    case 'TOGGLE_FILTER':
-      if (state.includes(action.filter)) {
-        return [...filters.filter((f) => f !== action.filter)];
+    case actions.SET_FILTERS:
+      if (!action.payload) return [];
+      if (state.includes(action.payload)) {
+        return [...state.filter(f => f !== action.payload)];
       }
-      return [...state, action.filter];
+      return [...state, action.payload];
 
-
-    case 'CLEAR_FILTERS':
-      return [];
     default:
       return state;
   }
 }
 
 export const initialUiState = {
-  chaptersVisible: false,
+  chaptersVisible: true,
+  answersVisible: false,
   loading: false,
 };
 
 export function ui(state = initialUiState, action) {
   switch (action.type) {
-    case 'TOGGLE_CHAPTERS_VISIBLE':
+    case actions.TOGGLE_ANSWERS_VISIBLE:
+      return { ...state, answersVisible: !state.answersVisible };
+
+    case actions.TOGGLE_CHAPTERS_VISIBLE:
       return { ...state, chaptersVisible: !state.chaptersVisible };
-    case 'SET_LOADING':
-      return { ...state, loading: action.loadingState };
+
+    case actions.FETCH_ALL_QUESTIONS_REQUEST:
+      return { ...state, loading: true };
+
+    case actions.FETCH_ALL_QUESTIONS_SUCCESS:
+    case actions.FETCH_ALL_QUESTIONS_FAILURE:
+      return { ...state, loading: false };
 
     default:
       return state;
