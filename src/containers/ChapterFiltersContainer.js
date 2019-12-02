@@ -6,7 +6,7 @@ const mapStateToProps = state => {
   return {
     chapters: state.chapters,
     filters: state.filters,
-    visible: state.ui.chaptersVisible,
+    visible: state.ui.chapterFiltersVisible,
   };
 };
 

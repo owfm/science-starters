@@ -15,7 +15,7 @@ export function filters(state = [], action) {
 }
 
 export const initialUiState = {
-  chaptersVisible: true,
+  chapterFiltersVisible: true,
   answersVisible: false,
   loading: false,
 };
@@ -26,7 +26,7 @@ export function ui(state = initialUiState, action) {
       return { ...state, answersVisible: !state.answersVisible };
 
     case actions.TOGGLE_CHAPTERS_VISIBLE:
-      return { ...state, chaptersVisible: !state.chaptersVisible };
+      return { ...state, chapterFiltersVisible: !state.chapterFiltersVisible };
 
     case actions.FETCH_ALL_QUESTIONS_REQUEST:
       return { ...state, loading: true };

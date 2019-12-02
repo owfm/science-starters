@@ -9,8 +9,10 @@ import Controls from './ControlsContainer';
 import ChapterFilters from './ChapterFiltersContainer';
 import QuesionPage from './QuestionsPageContainer';
 
-const MainPage = ({ loading, fetchQuestions }) => {
-  useEffect(() => fetchQuestions(), []);
+const MainPage = ({ loading, needToFetchQuestions, fetchQuestions }) => {
+  useEffect(() => {
+    if (needToFetchQuestions) fetchQuestions();
+  }, [needToFetchQuestions, fetchQuestions]);
 
   return loading ? (
     <Loading color='palevioletred' />
@@ -26,6 +28,7 @@ const MainPage = ({ loading, fetchQuestions }) => {
 const mapStateToProps = state => {
   return {
     loading: state.ui.loading,
+    needToFetchQuestions: state.questions.length === 0,
   };
 };
 
