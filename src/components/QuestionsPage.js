@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import uuidv1 from 'uuid/v1';
 import { makeStyles } from '@material-ui/core/styles';
 import Question from './Question';
@@ -43,3 +44,12 @@ const QuestionsPage = ({ visibleQuestions, answersVisible }) => {
 };
 
 export default QuestionsPage;
+
+QuestionsPage.propTypes = {
+  visibleQuestions: PropTypes.arrayOf(PropTypes.object),
+  answersVisible: PropTypes.bool.isRequired,
+};
+
+QuestionsPage.defaultProps = {
+  visibleQuestions: [],
+};

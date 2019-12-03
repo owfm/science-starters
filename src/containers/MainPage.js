@@ -1,9 +1,11 @@
 import React, { useEffect } from 'react';
 import { connect } from 'react-redux';
 
+import PropTypes from 'prop-types';
+
 import Loading from '../components/LoadingIcon';
 
-import { fetchAllQuestions } from '../actions/dataFetching';
+import { fetchAllQuestions } from '../actions/questionsApiCalls';
 
 import Controls from './ControlsContainer';
 import ChapterFilters from './ChapterFiltersContainer';
@@ -15,7 +17,7 @@ const MainPage = ({ loading, needToFetchQuestions, fetchQuestions }) => {
   }, [needToFetchQuestions, fetchQuestions]);
 
   return loading ? (
-    <Loading color='palevioletred' />
+    <Loading color='palevioletred' type='balls' />
   ) : (
     <>
       <Controls />
@@ -39,3 +41,9 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(MainPage);
+
+MainPage.propTypes = {
+  loading: PropTypes.bool.isRequired,
+  needToFetchQuestions: PropTypes.bool.isRequired,
+  fetchQuestions: PropTypes.func.isRequired,
+};

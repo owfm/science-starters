@@ -1,5 +1,6 @@
 /* eslint-disable react/no-danger */
 import React, { useState } from 'react';
+import PropTypes from 'prop-types';
 import Card from '@material-ui/core/Card';
 import { Remarkable } from 'remarkable';
 import { makeStyles } from '@material-ui/core/styles';
@@ -61,3 +62,13 @@ const Question = ({ question, showAnswer }) => {
 };
 
 export default Question;
+
+Question.propTypes = {
+  question: PropTypes.shape({
+    id: PropTypes.string,
+    question: PropTypes.string,
+    answer: PropTypes.string,
+    chapter: PropTypes.string,
+  }).isRequired,
+  showAnswer: PropTypes.bool.isRequired,
+};

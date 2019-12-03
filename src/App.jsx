@@ -1,21 +1,23 @@
 // App.js
 import React from 'react';
-import { BrowserRouter as Router, Switch, Route, Link } from 'react-router-dom';
+import { BrowserRouter as Router, Switch, Route } from 'react-router-dom';
 import MainPage from './containers/MainPage';
 
-function App() {
+function App(props) {
   return (
-    <Switch>
-      <Route path='/'>
-        <MainPage />;
-      </Route>
-      <Route path='/about'>
-        <p>About page</p>
-      </Route>
-      <Route path='/editor'>
-        <p>editor page</p>
-      </Route>
-    </Switch>
+    <Router>
+      <Switch>
+        <Route path='/'>
+          <MainPage />;
+        </Route>
+        <Route path='/about'>
+          <p>About page</p>
+        </Route>
+        <Route path='/editor'>
+          <p>editor page</p>
+        </Route>
+      </Switch>
+    </Router>
   );
 }
 

@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 
-import { fetchAllQuestions } from '../actions/dataFetching';
+import { fetchAllQuestions } from '../actions/questionsApiCalls';
 import QuestionsPage from '../components/QuestionsPage';
 
 const mapStateToProps = state => {

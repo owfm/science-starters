@@ -6,7 +6,7 @@ import render from 'riteway/render-component';
 import App from './App';
 
 describe('App component', async assert => {
-  const createApp = (props = {}) => render(<App {...props} />);
+  const createApp = () => render(<App />);
 
   {
     const props = {};

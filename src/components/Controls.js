@@ -1,4 +1,5 @@
 import React from 'react';
+import PropTypes from 'prop-types';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import { FILTERED, UNFILTERED } from './constants';
@@ -95,3 +96,12 @@ const Controls = ({
 };
 
 export default Controls;
+
+Controls.propTypes = {
+  toggleAnswersVisible: PropTypes.func.isRequired,
+  toggleChaptersVisible: PropTypes.func.isRequired,
+  generateQuestions: PropTypes.func.isRequired,
+  disableGenerateButton: PropTypes.bool.isRequired,
+  chapterFiltersVisible: PropTypes.bool.isRequired,
+  answersVisible: PropTypes.bool.isRequired,
+};

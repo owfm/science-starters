@@ -1,4 +1,5 @@
 import React, { useEffect } from 'react';
+import PropTypes from 'prop-types';
 import { connect } from 'react-redux';
 import Controls from '../components/Controls';
 import * as uiActions from '../actions/ui';
@@ -57,3 +58,12 @@ const mapDispatchToProps = dispatch => {
 };
 
 export default connect(mapStateToProps, mapDispatchToProps)(ControlsContainer);
+
+ControlsContainer.propTypes = {
+  toggleAnswersVisible: PropTypes.func.isRequired,
+  toggleChaptersVisible: PropTypes.func.isRequired,
+  generateQuestions: PropTypes.func.isRequired,
+  disableGenerateButton: PropTypes.bool.isRequired,
+  chapterFiltersVisible: PropTypes.bool.isRequired,
+  answersVisible: PropTypes.bool.isRequired,
+};

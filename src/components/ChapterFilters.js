@@ -1,4 +1,7 @@
 import React from 'react';
+
+import PropTypes from 'prop-types';
+
 import FormGroup from '@material-ui/core/FormGroup';
 import FormControlLabel from '@material-ui/core/FormControlLabel';
 import Checkbox from '@material-ui/core/Checkbox';
@@ -35,3 +38,11 @@ const ChapterFilters = ({
 };
 
 export default ChapterFilters;
+
+ChapterFilters.propTypes = {
+  chapters: PropTypes.arrayOf(PropTypes.string).isRequired,
+  filters: PropTypes.arrayOf(PropTypes.string).isRequired,
+  visible: PropTypes.bool.isRequired,
+  onFilterClick: PropTypes.func.isRequired,
+  sortChaptersFn: PropTypes.func.isRequired,
+};

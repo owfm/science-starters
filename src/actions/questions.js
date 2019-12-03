@@ -1,5 +1,4 @@
 /* eslint-disable import/prefer-default-export */
-
 import * as actions from './types';
 
 const generateQuestions = filtered => (dispatch, getState) => {
